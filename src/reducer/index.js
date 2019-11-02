@@ -101,6 +101,16 @@ const rootReducer = (state = initialState, action) => {
                 }
             }
 
+        // Select Pfm
+        case SELECT_PFM:
+            console.log("@@@ Select Pfm " + JSON.stringify(action));
+            const currentIndex = state.uiState.checked.indexOf(action.payload);
+            if (currentIndex === -1) {
+                state.uiState.checked.push(action.payload);
+            }
+            else {
+                state.uiState.checked.splice(currentIndex, 1);
+            }
 
 
         // Delete Pfm

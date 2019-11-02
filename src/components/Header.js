@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from "prop-types"
 import { withStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/"
-import ToolBar from "@material-ui/core/Toolbar"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
 import Typography from "@material-ui/core/Typography"
 import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
 import AccountCircle from "@material-ui/icons/Delete"
-import state from "../store/index"
+import store from "../store/index"
 import { DELETE_PFM } from '../constatnts/action-types'
 
 const styles = {};
@@ -15,6 +15,7 @@ class Header extends React.Component {
     state = {
         checked: []
     };
+
     handleDeletePfms = () => {
         store.dispatch({
             type: DELETE_PFM
@@ -33,11 +34,21 @@ class Header extends React.Component {
         })
     }
     render() {
+        const classes = this.props;
 
         return (
-            <div>
-                This is Header
-            </div>
+            <AppBar position="static" color="default">
+                <Toolbar>
+                    <Typography variant="h3" color="secondary">
+                        PFM Library
+                    </Typography>
+                    {this.state.checked.length !== 0 ? (
+                        <IconButton onClick={this.handleDeletePfms} color="inherit">
+                            <AccountCircle />
+                        </IconButton>
+                    ) : null}
+                </Toolbar>
+            </AppBar>
         )
     }
 }
