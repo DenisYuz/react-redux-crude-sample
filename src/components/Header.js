@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton"
 import MenuIcon from "@material-ui/icons/Menu"
 import AccountCircle from "@material-ui/icons/Delete"
 import store from "../store/index"
-import { DELETE_PFM } from '../constatnts/action-types'
+import { DELETE_PFM } from '../constants/action-types'
 
 const styles = {};
 class Header extends React.Component {
@@ -39,7 +39,7 @@ class Header extends React.Component {
         return (
             <AppBar position="static" color="default">
                 <Toolbar>
-                    <Typography variant="h3" color="secondary">
+                    <Typography variant="h3" color="primary">
                         PFM Library
                     </Typography>
                     {this.state.checked.length !== 0 ? (

@@ -1,23 +1,22 @@
-import { ADD_PFM } from "../constatnts/action-types"
-import { UPDATE_PFM } from "../constatnts/action-types"
-import { SELECT_PFM } from "../constatnts/action-types"
-import { DELETE_PFM } from "../constatnts/action-types"
+import { ADD_PFM, UPDATE_PFM, SELECT_PFM, DELETE_PFM } from "../constants/action-types"
+import { UPDATE_PFM_LIST } from "../constants/action-types"
 
-import { OPEN_NEW_PFM_FORM } from "../constatnts/action-types"
-import { CLOSE_NEW_PFM_FORM } from "../constatnts/action-types"
-import { OPEN_EDIT_PFM_FORM } from "../constatnts/action-types"
-import { CLOSE_EDIT_PFM_FORM } from "../constatnts/action-types"
+import { OPEN_NEW_PFM_FORM } from "../constants/action-types"
+import { CLOSE_NEW_PFM_FORM } from "../constants/action-types"
+import { OPEN_EDIT_PFM_FORM } from "../constants/action-types"
+import { CLOSE_EDIT_PFM_FORM } from "../constants/action-types"
 import { ActionInfo } from "material-ui/svg-icons"
+
 const initialState = {
     pfms: [
         {
-            id: "pfmId1",
+            id: "1",
             name: "pfm1",
             description: "description for pfm1",
             date: "July 20, 2019"
         },
         {
-            id: "pfmId2",
+            id: "2",
             name: "pfm2",
             description: "description for pfm2",
             date: "April 05, 2019"
@@ -35,7 +34,13 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-    switch (action) {
+    switch (action.type) {
+        case UPDATE_PFM_LIST:
+            console.log("Update PFMs List");
+            return {
+                ...state,
+                pfms: action.payload
+            }
         // Create Pfm
         case ADD_PFM:
             console.log('Add new Pfm');
@@ -87,7 +92,8 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 uiState: {
                     ...state.uiState,
-                    openEditPfmForm: true
+                    openEditPfmForm: true,
+                    pfmToEdit: action.payload
                 }
             }
 
@@ -111,7 +117,7 @@ const rootReducer = (state = initialState, action) => {
             else {
                 state.uiState.checked.splice(currentIndex, 1);
             }
-
+            return state;
 
         // Delete Pfm
         case DELETE_PFM:
