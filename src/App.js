@@ -35,6 +35,12 @@ class App extends Component {
       type: UPDATE_PFM_LIST,
       payload: this.simulatePfmsList()
     })
+
+    store.dispatch({
+      type: SELECT_PFM,
+      payload: "1"
+    })
+
   }
 
   render() {
@@ -42,7 +48,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Header></Header>
-        <ListComponent></ListComponent>
+        <ListComponent ></ListComponent>
         <EditDialog />
       </React.Fragment>
     )

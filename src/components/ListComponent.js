@@ -77,9 +77,9 @@ class ListComponent extends React.Component {
 
     };
 
-    handleToggle = value => () => {
+    handleToggle =  (value) => {
         console.log("Select----------" + value);
-
+            return;
         store.dispatch({
             type: SELECT_PFM,
             payload: value

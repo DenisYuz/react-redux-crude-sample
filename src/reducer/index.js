@@ -5,7 +5,7 @@ import { OPEN_NEW_PFM_FORM } from "../constants/action-types"
 import { CLOSE_NEW_PFM_FORM } from "../constants/action-types"
 import { OPEN_EDIT_PFM_FORM } from "../constants/action-types"
 import { CLOSE_EDIT_PFM_FORM } from "../constants/action-types"
-import { ActionInfo } from "material-ui/svg-icons"
+import { ActionInfo } from "@material-ui/svg-icons"
 
 const initialState = {
     pfms: [
@@ -87,7 +87,7 @@ const rootReducer = (state = initialState, action) => {
             };
 
         case OPEN_EDIT_PFM_FORM:
-            console.log('Open Edit Pfm Form' + JSON.stringify(action));
+            console.log('Open Edit Pfm Form' + JSON.stringify(action.payload));
             return {
                 ...state,
                 uiState: {
@@ -103,7 +103,8 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 uiState: {
                     ...state.uiState,
-                    openEditPfmForm: false
+                    openEditPfmForm: false,
+                    pfmToEdit: undefined
                 }
             }
 
